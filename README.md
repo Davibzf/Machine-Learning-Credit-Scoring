@@ -80,7 +80,6 @@ O objetivo é simular um **sistema de análise de risco de crédito**, seguindo 
 * Regressão Linear (baseline)
 * Random Forest Regressor
 * Gradient Boosting
-* XGBoost
 
 Os modelos são comparados para identificar o melhor desempenho na previsão do score de crédito.
 

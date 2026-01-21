@@ -118,11 +118,7 @@ Essas técnicas permitem entender **quais fatores mais impactam o score de créd
 
 * Python
 * Pandas
-* NumPy
 * Scikit-learn
-* XGBoost
-* SHAP
-* Matplotlib / Seaborn
 * Jupyter Notebook
 
 ---

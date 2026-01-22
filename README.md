@@ -111,39 +111,6 @@ Essas técnicas permitem entender **quais fatores mais impactam o score de créd
 
 ---
 
-## 📂 ml-credit-scoring/
-│
-├── data/
-│   ├── raw/                 # Dados brutos (originais)
-│   ├── processed/           # Dados tratados e prontos para treino
-│   └── README.md            # Descrição dos dados
-│
-├── notebooks/
-│   ├── 01_eda.ipynb         # Análise exploratória (EDA)
-│   └── 02_modeling.ipynb    # Treinamento e avaliação dos modelos
-│
-├── src/
-│   ├── preprocessing.py    # Limpeza, encoding e preparação dos dados
-│   ├── training.py         # Treinamento dos modelos
-│   ├── evaluation.py       # Métricas e avaliação
-│   └── utils.py            # Funções auxiliares
-│
-├── models/
-│   └── gradient_boosting.pkl  # Modelo treinado (opcional)
-│
-├── reports/
-│   ├── figures/            # Gráficos e visualizações
-│   └── metrics/            # Resultados e métricas salvas
-│
-├── README.md               # Documentação principal do projeto
-├── requirements.txt        # Dependências do projeto
-├── .gitignore              # Arquivos ignorados pelo Git
-└── LICENSE                 # Licença (MIT)
-
-```
-
----
-
 ## 🚀 Possíveis Aplicações
 
 * Análise de risco de crédito

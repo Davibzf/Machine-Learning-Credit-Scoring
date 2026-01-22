@@ -61,15 +61,15 @@ O objetivo é simular um **sistema de análise de risco de crédito**, seguindo 
 
 ## 🧠 Metodologia
 
--  1. Importar as bibliotecas necessárias
--  2. Importar a Base de Dados de treinamento
--  3. Analisar informações do banco de dados
-- 4. Filtra o Banco de dados para ML
-- 5. Importar a ML
-- 6. Treinar a ML
-- 7. Testar a eficiencia da ML 
-- 8. Indentificar componentes fundamentais na análise de dados
-- 9. Implantar a ML em um ambiente de produção
+* `1. Importar as bibliotecas necessárias`
+* `2. Importar a Base de Dados de treinamento`
+* `3. Analisar informações do banco de dados`
+* `4. Filtra o Banco de dados para ML`
+* `5. Importar a ML`
+* `6. Treinar a ML`
+* `7. Testar a eficiencia da ML`
+* `8. Indentificar componentes fundamentais na análise de dados`
+* `9. Implantar a ML em um ambiente de produção`
 ---
 
 ## 🤖 Modelos de Machine Learning

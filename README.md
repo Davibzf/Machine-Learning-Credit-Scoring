@@ -13,7 +13,7 @@ O objetivo é simular um **sistema de análise de risco de crédito**, seguindo 
 
 ## 🎯 Objetivos do Projeto
 
-* Prever o **score_credito** de clientes
+* Prever o **score_credito** de clientes em (Poor, Standard e Good) 
 * Analisar fatores que influenciam o risco de crédito
 * Aplicar métricas adequadas para avaliação
 * Explainable AI (XAI)

@@ -1,4 +1,7 @@
 # 🧠 ML-CS — Machine Learning Credit Scoring
+# Autor: Davi Bezerra Fraga  
+
+# Tecnologias: Python • Pandas • Scikit-learn • Jupyter Notebook
 
 ## 📌 Visão Geral
 
@@ -12,18 +15,12 @@ O objetivo é simular um **sistema de análise de risco de crédito**, seguindo 
 
 * Prever o **score_credito** de clientes
 * Analisar fatores que influenciam o risco de crédito
-* Comparar diferentes modelos de Machine Learning
 * Aplicar métricas adequadas para avaliação
-* Utilizar técnicas de **Explainable AI (XAI)** para interpretação dos resultados
+* Explainable AI (XAI)
 
 ---
 
 ## 📊 Variáveis Utilizadas
-
-### 🔹 Identificação e tempo
-
-* `id_cliente`
-* `mes`
 
 ### 🔹 Perfil do cliente
 
@@ -64,24 +61,20 @@ O objetivo é simular um **sistema de análise de risco de crédito**, seguindo 
 
 ## 🧠 Metodologia
 
-1. Análise exploratória dos dados (EDA)
-2. Tratamento de valores ausentes
-3. Encoding de variáveis categóricas
-4. Normalização / padronização
-5. Treinamento de modelos supervisionados
-6. Avaliação de desempenho com métricas apropriadas
-7. Análise de importância das variáveis
-8. Explicabilidade com técnicas de XAI
-
+# 1. Importar as bibliotecas necessárias
+# 2. Importar a Base de Dados de treinamento
+# 3. Analisar informações do banco de dados
+# 4. Filtra o Banco de dados para ML
+# 5. Importar a ML
+# 6. Treinar a ML
+# 7. Testar a eficiencia da ML 
+# 8. Indentificar componentes fundamentais na análise de dados
+# 9 Implantar a ML em um ambiente de produção
 ---
 
 ## 🤖 Modelos de Machine Learning
 
-* Regressão Linear (baseline)
 * Random Forest Regressor
-* Gradient Boosting
-
-Os modelos são comparados para identificar o melhor desempenho na previsão do score de crédito.
 
 ---
 
@@ -96,11 +89,6 @@ Os modelos são comparados para identificar o melhor desempenho na previsão do 
 ### 🔹 Classificação (opcional)
 
 * Accuracy
-* Precision
-* Recall
-* F1-score
-* AUC-ROC
-
 ---
 
 ## 🔍 Explainable AI (XAI)
@@ -123,27 +111,35 @@ Essas técnicas permitem entender **quais fatores mais impactam o score de créd
 
 ---
 
-## 📂 Estrutura do Projeto
-
-```
-ml-credit-scoring/
+## 📂 ml-credit-scoring/
 │
 ├── data/
-│   ├── raw/
-│   └── processed/
+│   ├── raw/                 # Dados brutos (originais)
+│   ├── processed/           # Dados tratados e prontos para treino
+│   └── README.md            # Descrição dos dados
 │
 ├── notebooks/
-│   ├── eda.ipynb
-│   └── modeling.ipynb
+│   ├── 01_eda.ipynb         # Análise exploratória (EDA)
+│   └── 02_modeling.ipynb    # Treinamento e avaliação dos modelos
 │
 ├── src/
-│   ├── preprocessing.py
-│   ├── training.py
-│   └── evaluation.py
+│   ├── preprocessing.py    # Limpeza, encoding e preparação dos dados
+│   ├── training.py         # Treinamento dos modelos
+│   ├── evaluation.py       # Métricas e avaliação
+│   └── utils.py            # Funções auxiliares
 │
-├── README.md
-├── requirements.txt
-└── .gitignore
+├── models/
+│   └── gradient_boosting.pkl  # Modelo treinado (opcional)
+│
+├── reports/
+│   ├── figures/            # Gráficos e visualizações
+│   └── metrics/            # Resultados e métricas salvas
+│
+├── README.md               # Documentação principal do projeto
+├── requirements.txt        # Dependências do projeto
+├── .gitignore              # Arquivos ignorados pelo Git
+└── LICENSE                 # Licença (MIT)
+
 ```
 
 ---

@@ -1,137 +1,125 @@
-# 🧠 ML-CS — Machine Learning Credit Scoring
-# Autor: Davi Bezerra Fraga  
+🧠 ML-CS — Machine Learning Credit Scoring
+👤 Autor: Davi Bezerra Fraga
+🛠️ Tecnologias
 
-# Tecnologias: Python 3.11.4 • Pandas • Scikit-learn • Jupyter Notebook
+Python 3.11.4 • Pandas • Scikit-learn • Jupyter Notebook
 
-## 📌 Visão Geral
+📌 Visão Geral
 
-O **ML-CS (Machine Learning Credit Scoring)** é um projeto de **Machine Learning supervisionado** desenvolvido para **prever o score de crédito de clientes** a partir de dados financeiros, demográficos e comportamentais estruturados.
+Este projeto implementa um modelo de Machine Learning supervisionado para Credit Scoring, com o objetivo de avaliar o risco de crédito de clientes e prever a probabilidade de inadimplência com base em dados financeiros, demográficos e comportamentais.
 
-O objetivo é simular um **sistema de análise de risco de crédito**, seguindo boas práticas utilizadas por **bancos e fintechs**, com foco em **precisão, avaliação correta e interpretabilidade dos modelos**.
+Os dados utilizados foram obtidos na plataforma Kaggle, amplamente reconhecida na comunidade de Data Science, tornando o projeto próximo de cenários reais utilizados por bancos e fintechs.
 
----
+O foco é demonstrar um pipeline completo de Machine Learning, desde a preparação dos dados até a aplicação do modelo em novos clientes.
 
-## 🎯 Objetivos do Projeto
+🎯 Objetivos do Projeto
 
-* Prever o **score_credito** de clientes em (Poor, Standard e Good) 
-* Analisar fatores que influenciam o risco de crédito
-* Aplicar métricas adequadas para avaliação
-* Explainable AI (XAI)
+📊 Automatizar a análise de risco de crédito
 
----
+🧠 Utilizar Machine Learning para apoiar decisões financeiras
 
-## 📊 Variáveis Utilizadas
+🔍 Identificar padrões relevantes nos dados
 
-### 🔹 Perfil do cliente
+🚀 Demonstrar habilidades práticas em Data Science e ML
 
-* `idade`
-* `profissao`
-* `salario_anual`
+🔁 Pipeline de Machine Learning
+1️⃣ Aquisição dos Dados
 
-### 🔹 Relacionamento financeiro
+Dataset público extraído do Kaggle
 
-* `num_contas`
-* `num_cartoes`
-* `idade_historico_credito`
+Arquivos utilizados:
 
-### 🔹 Empréstimos e crédito
+tabelatreinamento.csv — dados para treino do modelo
 
-* `num_emprestimos`
-* `juros_emprestimo`
-* `emprestimo_carro`
-* `emprestimo_casa`
-* `emprestimo_pessoal`
-* `emprestimo_credito`
-* `emprestimo_estudantil`
+tabeladenovosclientes.csv — dados para simulação de novos clientes
 
-### 🔹 Comportamento financeiro
+2️⃣ Análise Exploratória dos Dados (EDA)
 
-* `dias_atraso`
-* `comportamento_pagamento`
-* `investimento_mensal`
-* `saldo_final_mes`
+Análise da estrutura dos dados
 
-🎯 **Variável alvo (target):**
+Verificação de distribuições e padrões
 
-* `score_credito`
+Compreensão das variáveis relevantes para o score de crédito
 
-> ⚠️ A variável `id_cliente` é utilizada apenas como identificador e não deve ser usada diretamente no treinamento do modelo.
+3️⃣ Pré-processamento
 
----
+Tratamento de variáveis categóricas
 
-## 🧠 Metodologia
+Codificação dos dados para uso em modelos supervisionados
 
-* `1. Importar as bibliotecas necessárias`
-* `2. Importar a Base de Dados de treinamento`
-* `3. Analisar informações do banco de dados`
-* `4. Filtra o Banco de dados para ML`
-* `5. Importar a ML`
-* `6. Treinar a ML`
-* `7. Testar a eficiencia da ML`
-* `8. Indentificar componentes fundamentais na análise de dados`
-* `9. Implantar a ML em um ambiente de produção`
----
+Definição de features (variáveis independentes) e target (score de crédito)
 
-## 🤖 Modelos de Machine Learning
+4️⃣ Divisão dos Dados
 
-* Random Forest Regressor
+Separação em treino (70%) e teste (30%)
 
----
+Avaliação justa do desempenho do modelo
 
-## 📈 Métricas de Avaliação
+5️⃣ Modelagem
 
-### 🔹 Regressão
+Treinamento de um Random Forest Classifier
 
-* MAE (Mean Absolute Error)
-* RMSE (Root Mean Squared Error)
-* R² (Coeficiente de Determinação)
+Algoritmo escolhido pela robustez e bom desempenho em problemas de classificação
 
-### 🔹 Classificação (opcional)
+6️⃣ Avaliação do Modelo
 
-* Accuracy
----
+Cálculo da acurácia no conjunto de teste
 
-## 🔍 Explainable AI (XAI)
+Análise do desempenho geral do modelo
 
-O projeto utiliza técnicas de **Explainable AI** para tornar as decisões do modelo interpretáveis, como:
+7️⃣ Interpretação dos Resultados
 
-* Importância das features
-* SHAP values
+Análise da importância das variáveis
 
-Essas técnicas permitem entender **quais fatores mais impactam o score de crédito**, algo essencial em sistemas financeiros.
+Identificação dos fatores que mais influenciam o score de crédito
 
----
+8️⃣ Aplicação em Novos Clientes
 
-## 🛠 Tecnologias Utilizadas
+Uso do modelo treinado no arquivo tabeladenovosclientes.csv
 
-* Python 3.11.4
-* Pandas
-* Scikit-learn
-* Jupyter Notebook
+Simulação de previsões em um cenário real de tomada de decisão
 
----
+📈 Resultados
 
-## 🚀 Possíveis Aplicações
+✔️ Modelo funcional para classificação de risco de crédito
+✔️ Pipeline de Machine Learning organizado e reproduzível
+✔️ Interpretação das variáveis mais relevantes
+✔️ Aplicação prática em novos dados
 
-* Análise de risco de crédito
-* Sistemas de decisão financeira
-* Simulações para fintechs
-* Projetos acadêmicos
-* Portfólio em Data Science / Machine Learning
+Este projeto demonstra a capacidade de transformar dados brutos em insights acionáveis, habilidade essencial para áreas como Data Science, Machine Learning e Engenharia de Software.
 
----
+📁 Estrutura do Repositório
+├── ML-CS.ipynb                 # Notebook principal do projeto
+├── tabelatreinamento.csv       # Dataset de treino
+├── tabeladenovosclientes.csv   # Dataset para previsão
+├── .gitignore
+├── LICENSE
+└── README.md
 
-## ⚠️ Aviso Legal
+🚀 Como Executar o Projeto
+# Clone o repositório
+git clone https://github.com/Davibzf/Machine-Learning-Credit-Scoring
 
-Este projeto possui **fins educacionais e demonstrativos**. Não deve ser utilizado diretamente para decisões financeiras reais sem validações regulatórias, auditoria de modelos e conformidade legal.
+# Acesse a pasta
+cd Machine-Learning-Credit-Scoring
 
----
 
-## 👨‍💻 Autor
+Abra o notebook ML-CS.ipynb em um ambiente Jupyter e execute as células sequencialmente.
 
-**Davi Bezerra Fraga**
-Projeto desenvolvido para estudos em **Machine Learning aplicado a crédito e finanças**.
+🌐 Links
 
----
+🔗 Projeto no GitHub:
+https://github.com/Davibzf/Machine-Learning-Credit-Scoring
 
-⭐ Se este projeto te ajudou, considere deixar uma estrela!
+💼 Portfólio:
+https://github.com/Davibzf
+
+📌 Observações Finais
+
+Este projeto faz parte do meu portfólio profissional em Data Science e Machine Learning e pode servir como base para:
+
+otimizações de modelos
+
+testes com outros algoritmos
+
+evolução para ambientes de produção

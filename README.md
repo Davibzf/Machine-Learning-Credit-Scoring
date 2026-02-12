@@ -1,7 +1,7 @@
 # 🧠 ML-CS — Machine Learning Credit Scoring
 # Autor: Davi Bezerra Fraga  
 
-# Tecnologias: Python 3.11.4 • Pandas • Scikit-learn • Jupyter Notebook
+# Tecnologias: Python • Pandas • Scikit-learn • Jupyter Notebook
 
 ## 📌 Visão Geral
 

@@ -26,14 +26,15 @@
 
 ## 🎯 Visão Geral
 
-Este projeto implementa um **sistema de Credit Scoring** utilizando Machine Learning supervisionado para classificar clientes em categorias de risco: **Ruim (Poor)**, **Médio (Standard)** ou **Bom (Good)**.
+O **ML-CS (Machine Learning Credit Scoring)** é um projeto de **Machine Learning supervisionado** desenvolvido para prever o score de crédito de clientes a partir de dados financeiros, demográficos e comportamentais estruturados.
 
 > **Contexto:** Instituições financeiras precisam avaliar rapidamente o perfil de crédito de clientes para tomada de decisão em empréstimos, financiamentos e concessão de limites.
 
 ### 📊 Fonte dos Dados
 - Dataset público da plataforma **Kaggle**
 - Simulação de cenário real do setor financeiro
-- **100.000 registros** com 25 variáveis financeiras e demográficas
+- **100.000 registros** com 25 variáveis
+- Classes alvo: **Poor** (Ruim), **Standard** (Médio), **Good** (Bom)
 
 ---
 
@@ -44,52 +45,51 @@ Este projeto implementa um **sistema de Credit Scoring** utilizando Machine Lear
 | **🤖 Automação** | Substituir análise manual por modelo preditivo |
 | **📉 Redução de Risco** | Minimizar subjetividade na concessão de crédito |
 | **🔍 Identificação de Padrões** | Descobrir variáveis mais relevantes para risco |
-| **📚 Demonstração Técnica** | Portfolio em Data Science e ML |
+| **📚 Demonstração Técnica** | Portfólio em Data Science e ML |
 
 ---
 
 ## 🔁 Pipeline do Projeto
 
 ```
-📦 Aquisição dos Dados (Kaggle)
+📦 Aquisição dos Dados (tabelatreinamento.csv)
     ↓
-🔍 Análise Exploratória (EDA)
+🔍 Análise Exploratória (info(), display())
     ↓
-🧹 Pré-processamento (Label Encoding)
+🧹 Pré-processamento (LabelEncoder para variáveis categóricas)
     ↓
-✂️ Divisão Treino/Teste (70/30)
+✂️ Divisão Treino/Teste (70% treino, 30% teste)
     ↓
-🤖 Modelagem (Random Forest)
+🤖 Modelagem (RandomForestClassifier)
     ↓
-📊 Avaliação (Acurácia)
+📊 Avaliação (accuracy_score: 82.27%)
     ↓
-📈 Interpretação (Feature Importance)
+📈 Interpretação (feature_importances_)
     ↓
-🚀 Aplicação em Novos Clientes
+🚀 Aplicação em Novos Clientes (tabeladenovosclientes.csv)
 ```
 
 ---
 
 ## 📈 Resultados
 
-### ✅ Métricas de Performance
+### ✅ Acurácia do Modelo
 
 | Modelo | Acurácia |
 |--------|----------|
-| **Random Forest** | **82.54%** |
-| KNN (comparação) | 73.24% |
+| **Random Forest** | **82.27%** |
 
 ### 🔑 Variáveis Mais Relevantes
 
 | Variável | Importância |
 |----------|-------------|
-| **divida_total** | 12.39% |
-| **mix_credito** | 8.54% |
-| **juros_emprestimo** | 7.94% |
-| **idade_historico_credito** | 6.95% |
-| **dias_atraso** | 6.39% |
+| **divida_total** | 11.75% |
+| **mix_credito** | 8.44% |
+| **juros_emprestimo** | 8.08% |
+| **idade_historico_credito** | 7.53% |
+| **dias_atraso** | 6.50% |
 
-> 💡 **Insight:** Dívida total e mix de crédito são os fatores mais determinantes para o score
+> 💡 **Insight:** Dívida total e mix de crédito são os fatores mais determinantes para o score de crédito
 
 ---
 
@@ -130,15 +130,15 @@ cd ml-credit-scoring
 
 2. **Execute o Jupyter Notebook**
 ```bash
-jupyter notebook "ML - CS.ipynb"
+jupyter notebook "ML-CS.ipynb"
 ```
 
 3. **Estrutura de Arquivos Necessária**
 ```
 📁 projeto/
-├── ML - CS.ipynb
-├── clientes.csv (dados de treino)
-└── planilha.csv (novos clientes)
+├── ML-CS.ipynb
+├── tabelatreinamento.csv (dados de treino)
+└── tabeladenovosclientes.csv (novos clientes para previsão)
 ```
 
 ---
@@ -148,19 +148,27 @@ jupyter notebook "ML - CS.ipynb"
 ### 1️⃣ Importação e Carregamento
 ```python
 import pandas as pd
-tabela = pd.read_csv('clientes.csv')
+tabela = pd.read_csv('tabelatreinamento.csv')
 ```
 
 ### 2️⃣ Análise Inicial
 ```python
-display(tabela.info())  # Verificação de tipos e nulos
+display(tabela)
+display(tabela.info())  # Verificação de tipos e estrutura
 ```
 
 ### 3️⃣ Codificação de Variáveis Categóricas
 ```python
 from sklearn.preprocessing import LabelEncoder
-codificador = LabelEncoder()
-tabela["profissao"] = codificador.fit_transform(tabela["profissao"])
+
+codificador_profissao = LabelEncoder()
+tabela["profissao"] = codificador_profissao.fit_transform(tabela["profissao"])
+
+codificador_credito = LabelEncoder()
+tabela["mix_credito"] = codificador_credito.fit_transform(tabela["mix_credito"])
+
+codificador_pagamento = LabelEncoder()
+tabela["comportamento_pagamento"] = codificador_pagamento.fit_transform(tabela["comportamento_pagamento"])
 ```
 
 ### 4️⃣ Preparação dos Dados
@@ -175,30 +183,41 @@ x_treino, x_teste, y_treino, y_teste = train_test_split(
 
 ### 5️⃣ Treinamento do Modelo
 ```python
-modelo = RandomForestClassifier()
-modelo.fit(x_treino, y_treino)
+from sklearn.ensemble import RandomForestClassifier
+modelo_arvore = RandomForestClassifier()
+modelo_arvore.fit(x_treino, y_treino)
 ```
 
 ### 6️⃣ Avaliação
 ```python
-previsoes = modelo.predict(x_teste)
+from sklearn.metrics import accuracy_score
+previsoes = modelo_arvore.predict(x_teste)
 acuracia = accuracy_score(y_teste, previsoes)
-print(f"Acurácia: {acuracia:.2%}")
+print(f"{acuracia*100:.2f}%")  # 82.27%
 ```
 
 ### 7️⃣ Importância das Features
 ```python
-importancias = pd.DataFrame({
-    'feature': x.columns,
-    'importancia': modelo.feature_importances_
-}).sort_values('importancia', ascending=False)
+colunas = list(x_teste)
+importancias = pd.DataFrame(
+    index=colunas, 
+    data=modelo_arvore.feature_importances_ * 100
+)
+print(importancias)
 ```
 
 ### 8️⃣ Previsão em Novos Dados
 ```python
-novos_clientes = pd.read_csv('planilha.csv')
-# ... pré-processamento igual ao treino
-previsoes = modelo.predict(novos_clientes)
+tabelanova = pd.read_csv('tabeladenovosclientes.csv')
+
+# Aplicar mesma codificação
+tabelanova["profissao"] = codificador_profissao.fit_transform(tabelanova["profissao"])
+tabelanova["mix_credito"] = codificador_credito.fit_transform(tabelanova["mix_credito"])
+tabelanova["comportamento_pagamento"] = codificador_pagamento.fit_transform(tabelanova["comportamento_pagamento"])
+
+tabelanova = tabelanova.drop(columns=['id_cliente'])
+previsoes = modelo_arvore.predict(tabelanova)
+print(previsoes)
 ```
 
 ---
@@ -207,14 +226,14 @@ previsoes = modelo.predict(novos_clientes)
 
 ### Variáveis Utilizadas (24 features)
 
-| Tipo | Variáveis |
-|------|-----------|
+| Categoria | Variáveis |
+|-----------|-----------|
 | **Demográficas** | idade, profissao |
 | **Financeiras** | salario_anual, divida_total, investimento_mensal, saldo_final_mes |
 | **Comportamentais** | dias_atraso, num_pagamentos_atrasados, comportamento_pagamento |
 | **Produtos** | num_contas, num_cartoes, num_emprestimos |
-| **Crédito** | mix_credito, idade_historico_credito, taxa_uso_credito |
-| **Empréstimos** | emprestimo_carro, casa, pessoal, credito, estudantil |
+| **Crédito** | mix_credito, idade_historico_credito, taxa_uso_credito, juros_emprestimo |
+| **Empréstimos** | emprestimo_carro, emprestimo_casa, emprestimo_pessoal, emprestimo_credito, emprestimo_estudantil |
 
 ### Distribuição das Classes
 - **Good** (Bom): Clientes de baixo risco
@@ -227,7 +246,7 @@ previsoes = modelo.predict(novos_clientes)
 
 - 🏦 **Bancos e Fintechs**: Automação de análise de crédito
 - 📱 **Sistemas de Decisão**: Score em tempo real para aprovações
-- 📊 **Análise de Portfolio**: Segmentação de clientes por risco
+- 📊 **Análise de Portfólio**: Segmentação de clientes por risco
 - 🎓 **Educacional**: Estudo de casos em Data Science
 - 📈 **Portfólio**: Demonstração de habilidades em ML
 
@@ -240,6 +259,7 @@ previsoes = modelo.predict(novos_clientes)
 - ✅ Sem tratamento para desbalanceamento de classes
 - ✅ Hiperparâmetros não otimizados (Random Forest padrão)
 - ✅ Sem validação cruzada
+- ✅ LabelEncoder aplicado separadamente para novos dados (pode causar inconsistências)
 
 ### Aviso Legal
 > ⚖️ **Este projeto possui fins educacionais e demonstrativos.**  
@@ -259,7 +279,8 @@ previsoes = modelo.predict(novos_clientes)
 - [ ] **Balanceamento de classes** (SMOTE)
 - [ ] **Interpretabilidade** com SHAP/LIME
 - [ ] **API REST** para deploy do modelo
-- [ ] **Dashboard interativo** para visualização
+- [ ] **Persistência do modelo** com joblib/pickle
+- [ ] **Salvar codificadores** para consistência em produção
 
 ---
 
@@ -270,9 +291,9 @@ Estudante e entusiasta de **Backend, IA e Machine Learning**
 
 | | |
 |---|---|
-| **📧 Email** | davi.fraga@email.com |
-| **🔗 LinkedIn** | [linkedin.com/in/davibezerrafraga](https://linkedin.com/in/davibezerrafraga) |
-| **🐙 GitHub** | [github.com/davibezerrafraga](https://github.com/davibezerrafraga) |
+| **📧 Email** | davibezerrafraga@gmail.com |
+| **🔗 LinkedIn** | [https://www.linkedin.com/in/davizf/](https://www.linkedin.com/in/davizf/) |
+| **🐙 GitHub** | [https://github.com/Davibzf](https://github.com/Davibzf) |
 | **🌐 Portfólio** | [davibezerrafraga.vercel.app](https://davibezerrafraga.vercel.app) |
 
 ---
